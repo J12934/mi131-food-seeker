@@ -6,7 +6,7 @@ import registerServiceWorker from './client/registerServiceWorker';
 
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3000');
+const socket = io('/');
 
 socket.emit('search-query', {
     topic: 'Burgers',
