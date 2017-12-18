@@ -1,26 +1,22 @@
 const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const SearchModel = require('./models/Search');
 
-app.get('/', (req, res) => res.send('Hello Hamburg!'));
+const SearchRouter = require('./router/SearchRouter');
 
 io.on('connection', function(client) {
+    const searchRouter = new SearchRouter({ client });
+
     // Event for testing the connection
     client.on('tick', () => {
         client.emit('tock');
     });
 
-    client.on('search-query', async function({ term, location }) {
-        await SearchModel.create({
-            term,
-            location,
-        });
+    // Handeling Search Queries
+    client.on('query', searchRouter.query);
 
-        client.emit('search-results', {
-            things: 'stuff',
-        });
-    });
+    // Handeling Search Typeahead requests
+    client.on('typeahead', searchRouter.typeahead);
 });
 server.listen(5000);
 
