@@ -1,9 +1,11 @@
 const SearchModel = require('../models/Search');
+const YelpAPI = require('../services/YelpAPI');
 
 module.exports = class SearchRouter {
-    constructor({ client, searchModel = SearchModel }) {
+    constructor({ client, searchModel = SearchModel, yelpAPI = YelpAPI } = {}) {
         this._client = client;
         this._searchModel = searchModel;
+        this._yelpAPI = new yelpAPI();
     }
 
     /**
@@ -12,18 +14,17 @@ module.exports = class SearchRouter {
     async query({ term, location }) {
         // TODO Validation
 
-        await this._searchModel.create({
-            term,
-            location,
-        });
-
-        // Perform API Request to get the results
+        const [_, results] = await Promise.all([
+            this._searchModel.create({
+                term,
+                location,
+            }),
+            this._yelpAPI.search({ term, location }),
+        ]);
 
         // TODO emit some sort of event for nearby users
 
-        this._client.emit('results', {
-            things: 'stuff',
-        });
+        this._client.emit('results', results);
     }
 
     /**
