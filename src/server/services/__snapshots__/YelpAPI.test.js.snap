@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YelpAPI should transform returned API Data 1`] = `
+Array [
+  Array [
+    "
+            query Search($term: String!, $location: String!) {
+                search(term: $term, location: $location) {
+                    total
+                    business {
+                        name
+                        rating
+                        coordinates {
+                            latitude
+                            longitude
+                        }
+                    }
+                }
+            }",
+    Object {
+      "location": "Kiel",
+      "term": "burger",
+    },
+  ],
+]
+`;
+
+exports[`YelpAPI should transform returned API Data 2`] = `
+Array [
+  "foo",
+  "bar",
+]
+`;
