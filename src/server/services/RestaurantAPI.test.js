@@ -2,9 +2,9 @@
  * @jest-environment node
  */
 
-const YelpAPI = require('./YelpAPI');
+const RestaurantAPI = require('./RestaurantAPI');
 
-describe('YelpAPI', () => {
+describe('Restaurant', () => {
     it('should transform returned API Data', async () => {
         class GraphQLClientMock {
             request = jest.fn(() => {
@@ -14,16 +14,18 @@ describe('YelpAPI', () => {
             });
         }
 
-        const yelpAPI = new YelpAPI({
+        const restaurantAPI = new RestaurantAPI({
             graphQLClient: GraphQLClientMock,
         });
 
-        const results = await yelpAPI.search({
+        const results = await restaurantAPI.search({
             term: 'burger',
             location: 'Kiel',
         });
 
-        expect(yelpAPI._graphqlClient.request.mock.calls).toMatchSnapshot();
+        expect(
+            restaurantAPI._graphqlClient.request.mock.calls
+        ).toMatchSnapshot();
         expect(results).toMatchSnapshot();
     });
 });

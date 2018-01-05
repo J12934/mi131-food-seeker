@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`YelpAPI should transform returned API Data 1`] = `
+exports[`Restaurant should transform returned API Data 1`] = `
 Array [
   Array [
     "
@@ -8,6 +8,7 @@ Array [
                 search(term: $term, location: $location) {
                     total
                     business {
+                        id
                         name
                         rating
                         coordinates {
@@ -25,7 +26,7 @@ Array [
 ]
 `;
 
-exports[`YelpAPI should transform returned API Data 2`] = `
+exports[`Restaurant should transform returned API Data 2`] = `
 Array [
   "foo",
   "bar",

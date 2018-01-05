@@ -1,7 +1,7 @@
 const Axios = require('axios');
 const { GraphQLClient } = require('graphql-request');
 
-module.exports = class YelpAPI {
+module.exports = class RestaurantAPI {
     constructor({ axios = Axios, graphQLClient = GraphQLClient } = {}) {
         this._httpClient = axios.create({
             baseURL: 'https://api.yelp.com/v3/',
@@ -26,6 +26,7 @@ module.exports = class YelpAPI {
                 search(term: $term, location: $location) {
                     total
                     business {
+                        id
                         name
                         rating
                         coordinates {
