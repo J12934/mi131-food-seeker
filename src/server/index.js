@@ -1,23 +1,23 @@
-const app = require('express')();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const { GraphQLServer } = require('graphql-yoga');
+const fs = require('fs');
+const merge = require('lodash/merge');
 
-const SearchRouter = require('./router/SearchRouter');
+const restaurantResolvers = require('./resolvers/restaurant');
 
-io.on('connection', function(client) {
-    const searchRouter = new SearchRouter({ client });
+const typeDefs = fs.readFileSync(__dirname + '/schema.graphql', 'utf8');
 
-    // Event for testing the connection
-    client.on('tick', () => {
-        client.emit('tock');
-    });
+const resolvers = merge(restaurantResolvers);
 
-    // Handeling Search Queries
-    client.on('query', searchRouter.query);
+const server = new GraphQLServer({ typeDefs, resolvers });
 
-    // Handeling Search Typeahead requests
-    client.on('typeahead', searchRouter.typeahead);
-});
-server.listen(5000);
+const options = {
+    port: 5000,
+    endpoint: '/graphql',
+    subscriptions: '/subscriptions',
+    playground: '/playground',
+    uploads: false,
+};
 
-module.exports = server;
+server.start(options, ({ port }) =>
+    console.log(`Server is running on localhost:${port}`)
+);

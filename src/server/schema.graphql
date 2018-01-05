@@ -1,0 +1,30 @@
+type Coordinates {
+    latitude: Float!
+    longitude: Float!
+}
+
+type Restaurant {
+    id: String!
+    name: String!
+    rating: Float!
+    coordinates: Coordinates!
+}
+
+type TypeaheadResult {
+    id: String!
+    name: String!
+}
+
+input CoordinatesInput {
+    latitude: Float!
+    longitude: Float!
+}
+
+type Query {
+    search(query: String!, coordinates: CoordinatesInput!): [Restaurant!]!
+    typeahead(
+        query: String!
+        coordinates: CoordinatesInput!
+    ): [TypeaheadResult!]!
+    restaurant(id: String!): Restaurant!
+}
