@@ -20,10 +20,10 @@ module.exports = class RestaurantAPI {
         );
     }
 
-    search({ term, location }) {
+    search({ term, coordinates: { latitude, longitude } }) {
         const query = `
-            query Search($term: String!, $location: String!) {
-                search(term: $term, location: $location) {
+            query Search($term: String!, $latitude: Float!, $longitude: Float! ) {
+                search(term: $term, latitude: $latitude, longitude: $longitude) {
                     total
                     business {
                         id
@@ -38,11 +38,30 @@ module.exports = class RestaurantAPI {
             }`;
 
         return this._graphqlClient
-            .request(query, { term, location })
+            .request(query, { term, latitude, longitude })
             .then(data => {
                 return data.search.business;
+            })
+            .catch(err => {
+                console.warn('Yelp API Search Request failed.', err);
+
+                throw new Error(
+                    'Cannot perform search. Please try again later'
+                );
             });
     }
 
-    typeahead() {}
+    typeahead({ term: text, coordinates: { latitude, longitude } }) {
+        return this._httpClient
+            .get('/autocomplete', { params: { text, latitude, longitude } })
+            .then(({ data }) => {
+                console.log(data);
+                return data.categories.map(({ title }) => title);
+            })
+            .catch(err => {
+                console.warn('Yelp API Autocomplete Request failed.', err);
+
+                return [];
+            });
+    }
 };

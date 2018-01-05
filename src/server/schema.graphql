@@ -10,21 +10,13 @@ type Restaurant {
     coordinates: Coordinates!
 }
 
-type TypeaheadResult {
-    id: String!
-    name: String!
-}
-
 input CoordinatesInput {
     latitude: Float!
     longitude: Float!
 }
 
 type Query {
-    search(query: String!, coordinates: CoordinatesInput!): [Restaurant!]!
-    typeahead(
-        query: String!
-        coordinates: CoordinatesInput!
-    ): [TypeaheadResult!]!
+    search(term: String!, coordinates: CoordinatesInput!): [Restaurant!]!
+    typeahead(term: String!, coordinates: CoordinatesInput!): [String!]!
     restaurant(id: String!): Restaurant!
 }
