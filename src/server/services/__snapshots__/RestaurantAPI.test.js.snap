@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Restaurant Search should return data in the right format 1`] = `
+exports[`RestaurantAPI search() should return data in the right format 1`] = `
 Array [
   Object {
     "coordinates": Object {
@@ -23,9 +23,9 @@ Array [
 ]
 `;
 
-exports[`Restaurant Search should throw a non specific error message if the api request fails. 1`] = `[Error: Cannot perform search. Please try again later]`;
+exports[`RestaurantAPI search() should throw a non specific error message if the api request fails. 1`] = `[Error: Cannot perform search. Please try again later]`;
 
-exports[`Restaurant Typeahead should return data in the right format 1`] = `
+exports[`RestaurantAPI typeahead() should return data in the right format 1`] = `
 Array [
   "Burgers",
   "Fast Food",

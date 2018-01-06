@@ -4,8 +4,8 @@
 
 const RestaurantAPI = require('./RestaurantAPI');
 
-describe('Restaurant', () => {
-    describe('Search', () => {
+describe('RestaurantAPI', () => {
+    describe('search()', () => {
         it('should return data in the right format', async () => {
             class GraphQLClientMock {
                 async request() {
@@ -79,7 +79,7 @@ describe('Restaurant', () => {
         });
     });
 
-    describe('Typeahead', () => {
+    describe('typeahead()', () => {
         it('should return data in the right format', async () => {
             class AxiosMock {
                 static create = () => {
