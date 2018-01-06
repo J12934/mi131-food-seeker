@@ -1,5 +1,4 @@
 const { Query: { search, typeahead, restaurant } } = require('./restaurant');
-const SearchEventEmitter = require('../events/SearchEventEmitter');
 
 jest.mock('../services/RestaurantAPI');
 
