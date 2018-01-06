@@ -10,12 +10,7 @@ module.exports = {
             return restaurantAPI.typeahead({ term, coordinates });
         },
         restaurant(_, { id }) {
-            return {
-                id: '12345678',
-                name: 'Johns Burger',
-                rating: 4.5,
-                coordinates,
-            };
+            return restaurantAPI.restaurant({ id });
         },
     },
 };

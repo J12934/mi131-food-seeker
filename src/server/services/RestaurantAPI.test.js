@@ -146,4 +146,56 @@ describe('RestaurantAPI', () => {
             expect(result).toEqual([]);
         });
     });
+
+    describe('search()', () => {
+        it('should return data in the right format', async () => {
+            class GraphQLClientMock {
+                async request() {
+                    return {
+                        business: {
+                            id: 'johns-burgers-kiel',
+                            name: "John's Burgers",
+                            rating: 4.5,
+                            coordinates: {
+                                latitude: 54.33204,
+                                longitude: 10.12449,
+                            },
+                        },
+                    };
+                }
+            }
+
+            const restaurantAPI = new RestaurantAPI({
+                graphQLClient: GraphQLClientMock,
+            });
+
+            const results = await restaurantAPI.restaurant({
+                id: 'johns-burgers-kiel',
+            });
+
+            expect(results).toMatchSnapshot();
+        });
+
+        it('should throw a non specific error message if the api request fails.', async () => {
+            class GraphQLClientMock {
+                async request() {
+                    throw new Error('No network connection.');
+                }
+            }
+
+            const restaurantAPI = new RestaurantAPI({
+                graphQLClient: GraphQLClientMock,
+            });
+
+            try {
+                await await restaurantAPI.restaurant({
+                    id: 'johns-burgers-kiel',
+                });
+
+                expect('unreachable').toBe(true);
+            } catch (err) {
+                expect(err).toMatchSnapshot();
+            }
+        });
+    });
 });

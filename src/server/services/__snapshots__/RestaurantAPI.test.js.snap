@@ -23,7 +23,21 @@ Array [
 ]
 `;
 
+exports[`RestaurantAPI search() should return data in the right format 2`] = `
+Object {
+  "coordinates": Object {
+    "latitude": 54.33204,
+    "longitude": 10.12449,
+  },
+  "id": "johns-burgers-kiel",
+  "name": "John's Burgers",
+  "rating": 4.5,
+}
+`;
+
 exports[`RestaurantAPI search() should throw a non specific error message if the api request fails. 1`] = `[Error: Cannot perform search. Please try again later]`;
+
+exports[`RestaurantAPI search() should throw a non specific error message if the api request fails. 2`] = `[Error: Cannot perform search. Please try again later]`;
 
 exports[`RestaurantAPI typeahead() should return data in the right format 1`] = `
 Array [

@@ -64,4 +64,34 @@ module.exports = class RestaurantAPI {
                 return [];
             });
     }
+
+    restaurant({ id }) {
+        const query = `
+            query Restaurant($id: String! ) {
+                business(id: $id) {
+                    id
+                    name
+                    rating
+                    coordinates {
+                        latitude
+                        longitude
+                    }
+                }
+            }`;
+
+        return this._graphqlClient
+            .request(query, {
+                id,
+            })
+            .then(data => {
+                return data.business;
+            })
+            .catch(err => {
+                console.warn('Yelp API Business Request failed.', err);
+
+                throw new Error(
+                    'Cannot perform search. Please try again later'
+                );
+            });
+    }
 };
