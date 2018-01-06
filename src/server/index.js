@@ -2,6 +2,8 @@ const { GraphQLServer } = require('graphql-yoga');
 const fs = require('fs');
 const merge = require('lodash/merge');
 
+require('./events/listener');
+
 const restaurantResolvers = require('./resolvers/restaurant');
 
 const typeDefs = fs.readFileSync(__dirname + '/schema.graphql', 'utf8');
