@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`restaurant resolvers restaurant() retuns expected result 1`] = `
+Object {
+  "coordinates": Object {
+    "latitude": 54.33204,
+    "longitude": 10.12449,
+  },
+  "id": "johns-burgers-kiel",
+  "name": "John's Burgers",
+  "rating": 4.5,
+}
+`;
+
+exports[`restaurant resolvers search() retuns expected result 1`] = `
+Array [
+  Object {
+    "coordinates": Object {
+      "latitude": 54.33204,
+      "longitude": 10.12449,
+    },
+    "id": "johns-burgers-kiel",
+    "name": "John's Burgers",
+    "rating": 4.5,
+  },
+  Object {
+    "coordinates": Object {
+      "latitude": 54.33254,
+      "longitude": 10.11822,
+    },
+    "id": "kitty-rock-belly-full-kiel",
+    "name": "Kitty Rock Belly Full",
+    "rating": 4.5,
+  },
+]
+`;
+
+exports[`restaurant resolvers typeahead() retuns expected result 1`] = `
+Array [
+  "Burgers",
+  "Burmese",
+  "Fast Food",
+]
+`;
