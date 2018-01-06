@@ -1,12 +1,12 @@
 const RestaurantAPI = require('../services/RestaurantAPI');
-const SearchEventEmmiter = require('../events/SearchEventEmitter');
+const SearchEventEmitter = require('../events/SearchEventEmitter');
 
 const restaurantAPI = new RestaurantAPI();
 
 module.exports = {
     Query: {
         search(_, { term, coordinates }) {
-            SearchEventEmmiter.emit(SearchEventEmmiter.types.SEARCH_STARTED, {
+            SearchEventEmitter.emit(SearchEventEmitter.types.SEARCH_STARTED, {
                 term,
                 coordinates,
             });
