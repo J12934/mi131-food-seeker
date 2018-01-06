@@ -1,5 +1,5 @@
 const RestaurantAPI = require('../services/RestaurantAPI');
-const SearchEventEmitter = require('../events/SearchEventEmitter');
+const SearchEventEmitter = require('../events/emitter/SearchEventEmitter');
 
 const restaurantAPI = new RestaurantAPI();
 
