@@ -18,8 +18,10 @@ const SlimParagraph = styled.p`
     margin: 8px 0;
 `;
 
-const SuggestionsList = ({ loading, suggestions }) => {
-    if (isArray(suggestions) && suggestions.length === 0) {
+export const SuggestionsList = ({ loading, suggestions }) => {
+    if (loading && suggestions.length === 0) {
+        return <p>Loading</p>;
+    } else if (isArray(suggestions) && suggestions.length === 0) {
         return (
             <SlimParagraph>
                 Mhh. You appear to be the first in this area to be using this
@@ -27,8 +29,6 @@ const SuggestionsList = ({ loading, suggestions }) => {
                 here!
             </SlimParagraph>
         );
-    } else if (loading) {
-        return <p>Loading</p>;
     }
 
     return suggestions.map(suggestion => (
@@ -36,7 +36,10 @@ const SuggestionsList = ({ loading, suggestions }) => {
     ));
 };
 
-export default function Suggestions({ tracking, data: { loading, searches } }) {
+export default function Suggestions({
+    tracking,
+    data: { loading, searches = [] },
+}) {
     return (
         <CenterContent>
             <SlimParagraph>
