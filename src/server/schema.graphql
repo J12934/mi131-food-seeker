@@ -8,6 +8,8 @@ type Restaurant {
     name: String!
     rating: Float!
     coordinates: Coordinates!
+    photos: [String!]!
+    location: String
 }
 
 input CoordinatesInput {

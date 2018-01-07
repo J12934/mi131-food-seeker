@@ -29,6 +29,10 @@ module.exports = class RestaurantAPI {
                         id
                         name
                         rating
+                        photos
+                        location {
+                            address1
+                        }
                         coordinates {
                             latitude
                             longitude
@@ -40,7 +44,12 @@ module.exports = class RestaurantAPI {
         return this._graphqlClient
             .request(query, { term, latitude, longitude })
             .then(data => {
-                return data.search.business;
+                return data.search.business.map(restaurant => {
+                    return {
+                        ...restaurant,
+                        location: restaurant.location.address1,
+                    };
+                });
             })
             .catch(err => {
                 console.warn('Yelp API Search Request failed.', err);
@@ -72,6 +81,10 @@ module.exports = class RestaurantAPI {
                     id
                     name
                     rating
+                    photos
+                    location {
+                        address1
+                    }
                     coordinates {
                         latitude
                         longitude
@@ -84,7 +97,10 @@ module.exports = class RestaurantAPI {
                 id,
             })
             .then(data => {
-                return data.business;
+                return {
+                    ...data.business,
+                    location: data.business.location.address1,
+                };
             })
             .catch(err => {
                 console.warn('Yelp API Business Request failed.', err);
