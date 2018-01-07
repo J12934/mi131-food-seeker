@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Logo from './Logo';
 import HeaderButtons from './HeaderButtons';
-import { Input } from '../form';
+import SearchForm from '../../container/header/SearchForm';
 
 const HeaderContainer = styled.div`
     background: linear-gradient(#f5a623, #fbcf3c);
@@ -16,7 +16,7 @@ export default function Header() {
         <HeaderContainer>
             <div>
                 <Logo />
-                <Input placeholder="Search" />
+                <SearchForm />
                 <HeaderButtons />
             </div>
         </HeaderContainer>
