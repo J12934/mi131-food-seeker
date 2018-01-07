@@ -10,6 +10,7 @@ import configureStore from './redux/configureStore';
 
 import Header from './components/header';
 import Suggestions from './container/Suggestions';
+import SearchResults from './container/search/Results';
 
 import PollGeoLocation from './container/PollGeoLocation';
 
@@ -25,6 +26,10 @@ class App extends Component {
                             <Header />
 
                             <Route exact path="/" component={Suggestions} />
+                            <Route
+                                path="/search/:term"
+                                component={SearchResults}
+                            />
 
                             <PollGeoLocation />
                         </div>
