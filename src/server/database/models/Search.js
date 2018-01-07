@@ -12,6 +12,10 @@ const SearchSchema = new mongoose.Schema({
     },
 });
 
+SearchSchema.index({
+    location: '2dsphere',
+});
+
 const Search = mongoose.model('Search', SearchSchema);
 
 Search.validateCoords = validateCoords;
