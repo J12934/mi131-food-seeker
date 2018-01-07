@@ -19,4 +19,5 @@ type Query {
     search(term: String!, coordinates: CoordinatesInput!): [Restaurant!]!
     typeahead(term: String!, coordinates: CoordinatesInput!): [String!]!
     restaurant(id: String!): Restaurant!
+    searches(coordinates: CoordinatesInput!): [String!]!
 }

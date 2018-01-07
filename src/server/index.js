@@ -5,10 +5,11 @@ const merge = require('lodash/merge');
 require('./events/listener');
 
 const restaurantResolvers = require('./resolvers/restaurant');
+const searchesResolvers = require('./resolvers/searches');
 
 const typeDefs = fs.readFileSync(__dirname + '/schema.graphql', 'utf8');
 
-const resolvers = merge(restaurantResolvers);
+const resolvers = merge(restaurantResolvers, searchesResolvers);
 
 const server = new GraphQLServer({ typeDefs, resolvers });
 
