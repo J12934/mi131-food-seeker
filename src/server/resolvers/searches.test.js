@@ -2,6 +2,11 @@ const { Query: { searches } } = require('./searches');
 const mongoose = require('../database/connection');
 const Search = require('../database/models/Search');
 
+beforeAll(async () => {
+    // This ensures that the db is properly initialised before runing the tests
+    await Search.find({});
+});
+
 beforeEach(() => {
     return Search.remove({});
 });
