@@ -3,8 +3,8 @@ const {
     PersistPerformedSearches,
 } = require('./PersistPerformedSearches');
 
-import mongoose from '../../database/connection';
-import Search from '../../database/models/Search';
+const mongoose = require('../../database/connection');
+const Search = require('../../database/models/Search');
 
 beforeEach(() => {
     return Search.remove({});
