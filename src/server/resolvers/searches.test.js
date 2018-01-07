@@ -15,7 +15,7 @@ afterAll(() => {
     return mongoose.disconnect();
 });
 
-describe('searches', () => {
+xdescribe('searches', () => {
     it('should return an empty array if the database is empty', async () => {
         const result = await searches(null, {
             coordinates: {
