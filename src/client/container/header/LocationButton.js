@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
@@ -10,11 +10,19 @@ const Message = styled.span`
 `;
 
 const LocatedMessage = () => {
-    return [<GPSFixedIcon />, <Message>Located</Message>];
+    return (
+        <Fragment>
+            <GPSFixedIcon /> <Message>Located</Message>
+        </Fragment>
+    );
 };
 
 const NotLocatedMessage = () => {
-    return [<GPSNotFixedIcon />, <Message>Locating</Message>];
+    return (
+        <Fragment>
+            <GPSNotFixedIcon /> <Message>Locating</Message>
+        </Fragment>
+    );
 };
 
 function LocationButton({ gpsActive }) {
