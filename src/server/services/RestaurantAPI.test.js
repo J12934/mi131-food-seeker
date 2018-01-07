@@ -17,6 +17,8 @@ describe('RestaurantAPI', () => {
                                     id: 'johns-burgers-kiel',
                                     name: "John's Burgers",
                                     rating: 4.5,
+                                    photos: ['photo1'],
+                                    location: { address1: 'address1' },
                                     coordinates: {
                                         latitude: 54.33204,
                                         longitude: 10.12449,
@@ -26,6 +28,8 @@ describe('RestaurantAPI', () => {
                                     id: 'kitty-rock-belly-full-kiel',
                                     name: 'Kitty Rock Belly Full',
                                     rating: 4.5,
+                                    photos: ['photo2'],
+                                    location: { address1: 'address2' },
                                     coordinates: {
                                         latitude: 54.33254,
                                         longitude: 10.11822,
@@ -156,6 +160,8 @@ describe('RestaurantAPI', () => {
                             id: 'johns-burgers-kiel',
                             name: "John's Burgers",
                             rating: 4.5,
+                            photos: ['photo1'],
+                            location: { address1: 'address1' },
                             coordinates: {
                                 latitude: 54.33204,
                                 longitude: 10.12449,

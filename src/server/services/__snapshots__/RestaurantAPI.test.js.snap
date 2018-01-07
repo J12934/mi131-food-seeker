@@ -8,7 +8,11 @@ Array [
       "longitude": 10.12449,
     },
     "id": "johns-burgers-kiel",
+    "location": "address1",
     "name": "John's Burgers",
+    "photos": Array [
+      "photo1",
+    ],
     "rating": 4.5,
   },
   Object {
@@ -17,7 +21,11 @@ Array [
       "longitude": 10.11822,
     },
     "id": "kitty-rock-belly-full-kiel",
+    "location": "address2",
     "name": "Kitty Rock Belly Full",
+    "photos": Array [
+      "photo2",
+    ],
     "rating": 4.5,
   },
 ]
@@ -30,7 +38,11 @@ Object {
     "longitude": 10.12449,
   },
   "id": "johns-burgers-kiel",
+  "location": "address1",
   "name": "John's Burgers",
+  "photos": Array [
+    "photo1",
+  ],
   "rating": 4.5,
 }
 `;
