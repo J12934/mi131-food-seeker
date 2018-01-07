@@ -3,11 +3,12 @@ import styled from 'styled-components';
 const FormInputType = styled.div`
     background-color: #fafafa;
     border: none;
-    border-radus: 2px;
+    border-radius: 2px;
     padding: 12px;
     box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.15);
     transition: 200ms ease-in-out background-color;
     transition: 200ms ease-in-out transform;
+    width: 100%;
 
     :hover {
         background-color: #f3f0f0;
@@ -23,4 +24,5 @@ export const Input = FormInputType.withComponent('input').extend`
 export const Button = FormInputType.withComponent('button').extend`
     font-size: 18px;
     font-weight: semi-bold;
+    cursor: pointer;
 `;
