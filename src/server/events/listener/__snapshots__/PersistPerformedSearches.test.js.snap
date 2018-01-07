@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchEventListener save query to database on search started event 1`] = `
+Array [
+  Object {
+    "location": Object {
+      "coordinates": Array [
+        11,
+        54,
+      ],
+      "type": "Point",
+    },
+    "term": "Burger",
+  },
+]
+`;

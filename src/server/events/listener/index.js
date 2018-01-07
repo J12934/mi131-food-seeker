@@ -1,3 +1,3 @@
 // Imports all Listeners
 
-require('./SearchEventListener');
+require('./PersistPerformedSearches');
