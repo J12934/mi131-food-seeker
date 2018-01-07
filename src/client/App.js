@@ -9,7 +9,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import configureStore from './redux/configureStore';
 
 import Header from './components/header';
-import Suggestions from './components/suggestions';
+import Suggestions from './container/Suggestions';
 
 import PollGeoLocation from './container/PollGeoLocation';
 

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import { default as geoLocationReducer } from './GeoLocation';
+import { default as geoLocation } from './GeoLocation';
 
 export default combineReducers({
-    geoLocationReducer,
+    geoLocation,
 });
