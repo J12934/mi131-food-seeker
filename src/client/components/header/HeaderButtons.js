@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Button } from '../form';
+import LocationButton from '../../container/header/LocationButton';
 
 const PositioningWrapper = styled.div`
     position: relative;
@@ -20,7 +21,7 @@ export default function HeaderButtons() {
     return (
         <PositioningWrapper>
             <ButtonRow>
-                <Button>Location</Button>
+                <LocationButton>Location</LocationButton>
                 <Button>Categories</Button>
             </ButtonRow>
         </PositioningWrapper>
