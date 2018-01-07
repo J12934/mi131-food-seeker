@@ -4,12 +4,15 @@
     "private": true,
     "dependencies": {
         "axios": "^0.17.1",
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-16": "^1.1.1",
         "express": "^4.16.2",
         "graphql-request": "^1.4.0",
         "graphql-yoga": "^1.0.0",
         "lodash": "^4.17.4",
         "mongoose": "^4.13.6",
-        "nodemon": "^1.12.4"
+        "nodemon": "^1.12.4",
+        "react-test-renderer": "^16.2.0"
     },
     "devDependencies": {
         "apollo-client-preset": "^1.0.6",
