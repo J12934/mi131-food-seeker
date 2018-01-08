@@ -12,6 +12,7 @@ import configureStore from './redux/configureStore';
 import Header from './components/header';
 import Suggestions from './container/Suggestions';
 import SearchResults from './container/search/Results';
+import LocationChooserScreen from './container/map/LocationChooserScreen';
 
 import PollGeoLocation from './container/PollGeoLocation';
 
@@ -36,6 +37,10 @@ class App extends Component {
                             <Route
                                 path="/search/:term"
                                 component={SearchResults}
+                            />
+                            <Route
+                                path="/map"
+                                component={LocationChooserScreen}
                             />
 
                             <PollGeoLocation />

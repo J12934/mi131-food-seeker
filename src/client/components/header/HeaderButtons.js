@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Button } from '../form';
 import LocationButton from '../../container/header/LocationButton';
 
+import { Link } from 'react-router-dom';
+
 const PositioningWrapper = styled.div`
     position: relative;
 `;
@@ -21,7 +23,9 @@ export default function HeaderButtons() {
     return (
         <PositioningWrapper>
             <ButtonRow>
-                <LocationButton>Location</LocationButton>
+                <Link to="/map">
+                    <LocationButton>Location</LocationButton>
+                </Link>
                 <Button>Categories</Button>
             </ButtonRow>
         </PositioningWrapper>
