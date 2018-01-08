@@ -3,38 +3,51 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { Button } from '../../components/form';
-import { GPSFixedIcon, GPSNotFixedIcon } from '../../components/icons';
+import { GPSFixedIcon, GPSNotFixedIcon, MapIcon } from '../../components/icons';
 
 const Message = styled.span`
     margin-left: 8px;
 `;
 
-const LocatedMessage = () => {
+const GPSLocatedMessage = () => {
     return (
         <Fragment>
-            <GPSFixedIcon /> <Message>Located</Message>
+            <GPSFixedIcon /> <Message>GPS Fixed</Message>
         </Fragment>
     );
 };
 
-const NotLocatedMessage = () => {
+const GPSNotLocatedMessage = () => {
     return (
         <Fragment>
-            <GPSNotFixedIcon /> <Message>Locating</Message>
+            <GPSNotFixedIcon /> <Message>GPS Searching</Message>
         </Fragment>
     );
 };
 
-function LocationButton({ gpsActive }) {
+const LocationManuallySet = () => {
     return (
-        <Button>
-            {gpsActive ? <LocatedMessage /> : <NotLocatedMessage />}
-        </Button>
+        <Fragment>
+            <MapIcon /> <Message>Fixed Location</Message>
+        </Fragment>
     );
+};
+
+function LocationButton({ locationType, locationFixed }) {
+    let text;
+    if (locationType === 'manuel') {
+        text = <LocationManuallySet />;
+    } else if (locationFixed === true) {
+        text = <GPSLocatedMessage />;
+    } else {
+        text = <GPSNotLocatedMessage />;
+    }
+    return <Button>{text}</Button>;
 }
 
 export default connect(state => {
     return {
-        gpsActive: state.geoLocation.tracking,
+        locationType: state.geoLocation.locationType,
+        locationFixed: state.geoLocation.locationFixed,
     };
 })(LocationButton);

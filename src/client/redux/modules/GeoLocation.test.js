@@ -1,11 +1,15 @@
-import reducer, { initialState, updateLocation } from './GeoLocation';
+import reducer, {
+    initialState,
+    updateLocation,
+    updateLocationType,
+} from './GeoLocation';
 
 describe('GeoLocation', () => {
     describe('UPDATE_LOCATION', () => {
-        it('should set tracking to true', () => {
-            expect(initialState.tracking).toBe(false);
+        it('should set locationFixed to true', () => {
+            expect(initialState.locationFixed).toBe(false);
             const state = reducer(initialState, updateLocation(10, 10));
-            expect(state.tracking).toBe(true);
+            expect(state.locationFixed).toBe(true);
         });
 
         it('should set coordinates', () => {
@@ -14,6 +18,14 @@ describe('GeoLocation', () => {
                 latitude: 42,
                 longitude: 3,
             });
+        });
+    });
+
+    describe('UPDATE_LOCATION_TYPE', () => {
+        it('should set locationType to specified value', () => {
+            expect(initialState.locationType).toBe('gps');
+            const state = reducer(initialState, updateLocationType('manuel'));
+            expect(state.locationType).toBe('manuel');
         });
     });
 });

@@ -9,9 +9,9 @@ const defaultData = {
 };
 
 describe('Suggestion', () => {
-    it('Renders message that suggestions are shown for kiel if tracking is false', () => {
+    it('Renders message that suggestions are shown for kiel if locationFixed is false', () => {
         const wrapper = mount(
-            <Suggestion data={defaultData} tracking={false} />
+            <Suggestion data={defaultData} locationFixed={false} />
         );
 
         expect(
@@ -21,9 +21,9 @@ describe('Suggestion', () => {
         ).toBe(true);
     });
 
-    it('Renders message that suggestions are shown for current location if tracking is false', () => {
+    it('Renders message that suggestions are shown for current location if locationFixed is false', () => {
         const wrapper = mount(
-            <Suggestion data={defaultData} tracking={true} />
+            <Suggestion data={defaultData} locationFixed={true} />
         );
 
         expect(
@@ -33,9 +33,9 @@ describe('Suggestion', () => {
         ).toBe(true);
     });
 
-    it('Renders message that suggestions are shown for current location if tracking is false', () => {
+    it('Renders message that suggestions are shown for current location if locationFixed is false', () => {
         const wrapper = mount(
-            <Suggestion data={defaultData} tracking={true} />
+            <Suggestion data={defaultData} locationFixed={true} />
         );
 
         expect(
@@ -49,7 +49,7 @@ describe('Suggestion', () => {
         const wrapper = mount(
             <Suggestion
                 data={{ ...defaultData, searches: ['Burger', 'Pizza'] }}
-                tracking={true}
+                locationFixed={true}
             />
         );
 
@@ -61,7 +61,7 @@ describe('Suggestion', () => {
         const wrapper = mount(
             <Suggestion
                 data={{ ...defaultData, loading: true }}
-                tracking={true}
+                locationFixed={true}
             />
         );
 

@@ -21,9 +21,14 @@ class PollGeoLocation extends Component {
     }
 
     updateLocation() {
+        const { gpsEnabled } = this.props;
+        // Only start gps messurement when gps isnt disabled by the user
+        if (!gpsEnabled) return;
+
         navigator.geolocation.getCurrentPosition(
             ({ coords: { latitude, longitude } }) => {
-                this.props.updateLocation(latitude, longitude);
+                // Messurement might have been started before gps was disabled so it needs to be rechecked
+                if (gpsEnabled) this.props.updateLocation(latitude, longitude);
             }
         );
     }
@@ -33,10 +38,17 @@ class PollGeoLocation extends Component {
     }
 }
 
-export default connect(null, dispatch => {
-    return {
-        updateLocation: (latitude, longitude) => {
-            dispatch(updateLocation(latitude, longitude));
-        },
-    };
-})(PollGeoLocation);
+export default connect(
+    state => {
+        return {
+            gpsEnabled: state.geoLocation.locationType === 'gps',
+        };
+    },
+    dispatch => {
+        return {
+            updateLocation: (latitude, longitude) => {
+                dispatch(updateLocation(latitude, longitude));
+            },
+        };
+    }
+)(PollGeoLocation);

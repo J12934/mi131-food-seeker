@@ -14,7 +14,7 @@ const SearchSuggestions = gql`
 export default compose(
     connect(state => {
         return {
-            tracking: state.geoLocation.tracking,
+            locationFixed: state.geoLocation.locationFixed,
             coordinates: state.geoLocation.coordinates,
         };
     }),

@@ -37,7 +37,7 @@ export const SuggestionsList = ({ loading, suggestions }) => {
 };
 
 export default function Suggestions({
-    tracking,
+    locationFixed,
     data: { loading, searches = [] },
 }) {
     return (
@@ -46,7 +46,7 @@ export default function Suggestions({
                 <strong>Need suggestions?</strong>
             </SlimParagraph>
             <SlimParagraph>
-                {tracking
+                {locationFixed
                     ? 'Here are some things people around you were searching for:'
                     : 'Here are some things people in Kiel were searching for:'}
             </SlimParagraph>
