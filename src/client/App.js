@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -16,13 +17,19 @@ import PollGeoLocation from './container/PollGeoLocation';
 
 const store = configureStore();
 
+const AppContainer = styled.div`
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+`;
+
 class App extends Component {
     render() {
         return (
             <Router>
                 <ApolloProvider client={ApolloClient}>
                     <ReduxProvider store={store}>
-                        <div>
+                        <AppContainer>
                             <Header />
 
                             <Route exact path="/" component={Suggestions} />
@@ -32,7 +39,7 @@ class App extends Component {
                             />
 
                             <PollGeoLocation />
-                        </div>
+                        </AppContainer>
                     </ReduxProvider>
                 </ApolloProvider>
             </Router>

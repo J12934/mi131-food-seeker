@@ -9,6 +9,7 @@ const HeaderContainer = styled.div`
     background: linear-gradient(#f5a623, #fbcf3c);
     padding: 24px;
     padding-bottom: 48px;
+    z-index: 20;
 `;
 
 export default function Header() {
