@@ -1,6 +1,7 @@
 const { GraphQLServer } = require('graphql-yoga');
 const fs = require('fs');
 const merge = require('lodash/merge');
+const { static } = require('express');
 
 require('./events/listener');
 
@@ -24,3 +25,5 @@ const options = {
 server.start(options, ({ port }) =>
     console.log(`Server is running on localhost:${port}`)
 );
+
+server.express.use(static('build'));
