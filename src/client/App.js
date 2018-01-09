@@ -15,6 +15,7 @@ import SearchResults from './container/search/Results';
 import LocationChooserScreen from './container/map/LocationChooserScreen';
 
 import PollGeoLocation from './container/PollGeoLocation';
+import CategoriesChooserScreen from "./container/categories/CategoriesChooserScreen";
 
 const store = configureStore();
 
@@ -41,6 +42,10 @@ class App extends Component {
                             <Route
                                 path="/map"
                                 component={LocationChooserScreen}
+                            />
+                            <Route
+                                path="/categories"
+                                component={CategoriesChooserScreen}
                             />
 
                             <PollGeoLocation />
