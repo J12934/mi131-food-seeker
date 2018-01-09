@@ -20,10 +20,12 @@ module.exports = class RestaurantAPI {
         );
     }
 
-    search({ term, coordinates: { latitude, longitude } }) {
+    search({ term, coordinates: { latitude, longitude }, categories = [] }) {
+        const categoriesString = categories.join(',');
+
         const query = `
-            query Search($term: String!, $latitude: Float!, $longitude: Float! ) {
-                search(term: $term, latitude: $latitude, longitude: $longitude) {
+            query Search($term: String!, $latitude: Float!, $longitude: Float!, $categories: String! ) {
+                search(term: $term, latitude: $latitude, longitude: $longitude, categories: $categories) {
                     total
                     business {
                         id
@@ -42,7 +44,12 @@ module.exports = class RestaurantAPI {
             }`;
 
         return this._graphqlClient
-            .request(query, { term, latitude, longitude })
+            .request(query, {
+                term,
+                latitude,
+                longitude,
+                categories: categoriesString,
+            })
             .then(data => {
                 return data.search.business.map(restaurant => {
                     return {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Button } from '../form';
 import LocationButton from '../../container/header/LocationButton';
+import CategoryButton from './CategoryButton';
 
 import { Link } from 'react-router-dom';
 
@@ -26,7 +27,9 @@ export default function HeaderButtons() {
                 <Link to="/map">
                     <LocationButton>Location</LocationButton>
                 </Link>
-                <Button>Categories</Button>
+                <Link to="/categories">
+                    <CategoryButton>Categories</CategoryButton>
+                </Link>
             </ButtonRow>
         </PositioningWrapper>
     );
