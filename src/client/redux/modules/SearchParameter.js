@@ -1,84 +1,43 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// Actions
+export const ADD_CATEGORY = 'food_seeker/search_parameter/ADD_CATEGORY';
+export const REMOVE_CATEGORY = 'food_seeker/search_parameter/REMOVE_CATEGORY';
 
-import {
-    addCategory,
-    removeCategory,
-} from '../../redux/modules/SearchParameter';
-
-import Page from '../../components/structure/Page';
-import styled from 'styled-components';
-
-const CenterPage = Page.extend`
-    text-align: center;
-`;
-const categories = [
-    'Italian',
-    'Chinese',
-    'Burger',
-    'Pizza',
-    'Pasta',
-    'Mexian',
-    'Fast Food',
-    'Indian',
-    'Thai',
-];
-
-const CheckboxRow = styled.label`
-    display: block;
-    margin-bottom: 16px;
-`;
-
-const Checkbox = ({ name, onChange }) => {
-    const callOnChange = ({ target }) => {
-        onChange(name, target.checked);
-    };
-
-    return (
-        <CheckboxRow>
-            <input type="checkbox" onChange={callOnChange} />
-            {name}
-        </CheckboxRow>
-    );
+// Reducer
+export const initialState = {
+    categories: [],
 };
 
-class CategoriesChooserScreen extends Component {
-    checkboxChanged = (name, value) => {
-        if (value) {
-            this.props.addCategory(name);
-        } else {
-            this.props.removeCategory(name);
-        }
-    };
+export default function reducer(state = initialState, action = {}) {
+    switch (action.type) {
+        case ADD_CATEGORY:
+            return {
+                ...state,
+                categories: [...state.categories, action.category],
+            };
+        case REMOVE_CATEGORY:
+            return {
+                ...state,
+                categories: state.categories.filter(
+                    item => item !== action.category
+                ),
+            };
 
-    render() {
-        return (
-            <CenterPage>
-                <h1>Categories</h1>
-                {categories.map(catagory => (
-                    <Checkbox
-                        key={catagory}
-                        name={catagory}
-                        onChange={this.checkboxChanged}
-                    />
-                ))}
-            </CenterPage>
-        );
+        default:
+            return state;
     }
 }
 
-export default connect(
-    state => {
-        return { categories: state.searchParameter.categories };
-    },
-    dispatch => {
-        return {
-            addCategory: category => {
-                dispatch(addCategory(category));
-            },
-            removeCategory: category => {
-                dispatch(removeCategory(category));
-            },
-        };
-    }
-)(CategoriesChooserScreen);
+// Action Creators
+/**
+ * @param {string} category
+ */
+export function addCategory(category) {
+    return { type: ADD_CATEGORY, category };
+}
+
+/**
+ * @param {string} category
+ */
+export function removeCategory(category) {
+    return { type: REMOVE_CATEGORY, category };
+}
