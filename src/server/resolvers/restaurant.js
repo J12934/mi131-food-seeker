@@ -5,13 +5,13 @@ const restaurantAPI = new RestaurantAPI();
 
 module.exports = {
     Query: {
-        search(_, { term, coordinates }) {
+        search(_, { term, coordinates, categories }) {
             SearchEventEmitter.emit(SearchEventEmitter.types.SEARCH_STARTED, {
                 term,
                 coordinates,
             });
 
-            return restaurantAPI.search({ term, coordinates });
+            return restaurantAPI.search({ term, coordinates, categories });
         },
         typeahead(_, { term, coordinates }) {
             return restaurantAPI.typeahead({ term, coordinates });

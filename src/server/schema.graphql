@@ -18,7 +18,11 @@ input CoordinatesInput {
 }
 
 type Query {
-    search(term: String!, coordinates: CoordinatesInput!): [Restaurant!]!
+    search(
+        term: String!
+        coordinates: CoordinatesInput!
+        categories: [String!]
+    ): [Restaurant!]!
     typeahead(term: String!, coordinates: CoordinatesInput!): [String!]!
     restaurant(id: String!): Restaurant!
     searches(coordinates: CoordinatesInput!): [String!]!
