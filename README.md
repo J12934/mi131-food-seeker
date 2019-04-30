@@ -1,9 +1,5 @@
 # Food Seeker
 
-[![Build Status](https://travis-ci.org/J12934/mi131-food-seeker.svg?branch=master)](https://travis-ci.org/J12934/mi131-food-seeker)
-[![Maintainability](https://api.codeclimate.com/v1/badges/be313ab91f3627fadf1b/maintainability)](https://codeclimate.com/github/J12934/mi131-food-seeker/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/be313ab91f3627fadf1b/test_coverage)](https://codeclimate.com/github/J12934/mi131-food-seeker/test_coverage)
-
 ## Functionality of the Project
 
 * It's able to search for restaurants near you (specific time like dinner, lunch and specific place)
